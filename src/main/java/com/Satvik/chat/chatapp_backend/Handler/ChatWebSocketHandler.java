@@ -66,7 +66,7 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 
     private void broadcast(String message, WebSocketSession sender) {
         sessions.values().forEach(session -> {
-            if (session != sender && session.isOpen()) {
+            if (session.isOpen()) {
                 try {
                     session.sendMessage(new TextMessage(message));
                 } catch (Exception e) {
